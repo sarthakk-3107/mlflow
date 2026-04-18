@@ -1,0 +1,21 @@
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+scipy>=1.10
+pyarrow>=14.0
+
+# PyTorch CPU
+torch>=2.0
+
+# HuggingFace stack for fine-tuning
+transformers>=4.35
+datasets>=2.14
+peft>=0.7
+accelerate>=0.25
+
+# MLOps
+mlflow>=2.8
+optuna>=3.4
+
+# Utils
+pyyaml>=6.0

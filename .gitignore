@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# MLflow artifacts
+mlruns/
+mlartifacts/
+
+# Fine-tuning outputs
+ft_output/
+*.safetensors
+*.bin
+
+# Data (regenerated on each run)
+data/*.parquet
+data/*.pkl
+data/*.db
+
+# HuggingFace cache
+.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Env files
+.env

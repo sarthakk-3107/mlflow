@@ -1,0 +1,41 @@
+# Fine-tuning pipeline config - sized for low-spec CPU
+data:
+  dataset_name: "sst2"
+  train_size: 800          # Keep tiny for CPU
+  eval_size: 200
+  drift_size: 200
+  max_length: 64           # Short sequences = much faster
+  random_state: 42
+
+model:
+  base_model: "distilbert-base-uncased"
+  num_labels: 2
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.1
+  target_modules: ["q_lin", "v_lin"]   # DistilBERT attention projections
+
+training:
+  batch_size: 16
+  max_epochs: 2
+  learning_rate: 5.0e-4    # Higher LR is fine for LoRA
+  num_workers: 0
+  accelerator: "cpu"
+
+hpo:
+  n_trials: 3              # Each trial = a full mini fine-tune, keep small
+  timeout_seconds: 600
+
+mlflow:
+  tracking_uri: "file:./mlruns"
+  experiment_name: "sentiment_ft"
+  registered_model_name: "sentiment_classifier"
+
+drift:
+  threshold: 0.15
+
+canary:
+  promotion_threshold: 0.75
+  steps: [0.1, 0.25, 0.5, 1.0]
