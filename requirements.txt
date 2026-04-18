@@ -19,3 +19,6 @@ optuna>=3.4
 
 # Utils
 pyyaml>=6.0
+
+fastapi>=0.109
+uvicorn[standard]>=0.27
