@@ -1,5 +1,14 @@
 # LoRA Fine-tuning Pipeline with Feature Store + Model Registry
 
+## Highlights
+- Fine-tunes DistilBERT using LoRA (1% of params trainable, CPU-only)
+- Automated HPO via Optuna over LoRA rank, alpha, dropout, learning rate
+- MLflow registry with Staging → Production stage transitions
+- Embedding-based drift detection (KS-test) triggers automatic refresh
+- Canary rollout (10→25→50→100%) with accuracy-threshold rollback
+- FastAPI serving with registry-driven hot reload
+
+
 End-to-end fine-tuning pipeline for sentiment classification. Actually fine-tunes DistilBERT using LoRA adapters — trains ~0.1% of params so it runs on CPU.
 
 ## What it does
